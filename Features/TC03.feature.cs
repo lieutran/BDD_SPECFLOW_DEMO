@@ -19,21 +19,20 @@ namespace BDD_SPECFLOW_DEMO.Features
     [System.CodeDom.Compiler.GeneratedCodeAttribute("TechTalk.SpecFlow", "1.9.0.77")]
     [System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     [NUnit.Framework.TestFixtureAttribute()]
-    [NUnit.Framework.DescriptionAttribute("TC01")]
-    public partial class TC01Feature
+    [NUnit.Framework.DescriptionAttribute("TC03")]
+    public partial class TC03Feature
     {
         
         private static TechTalk.SpecFlow.ITestRunner testRunner;
         
-#line 1 "TC01.feature"
+#line 1 "TC03.feature"
 #line hidden
         
         [NUnit.Framework.TestFixtureSetUpAttribute()]
         public virtual void FeatureSetup()
         {
             testRunner = TechTalk.SpecFlow.TestRunnerManager.GetTestRunner();
-            TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "TC01", "In order to avoid silly mistakes\r\nAs a math idiot\r\nI want to be told the sum of t" +
-                    "wo numbers", ProgrammingLanguage.CSharp, ((string[])(null)));
+            TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "TC03", "As an automation tester\r\nI want use technical transform data to table", ProgrammingLanguage.CSharp, ((string[])(null)));
             testRunner.OnFeatureStart(featureInfo);
         }
         
@@ -66,23 +65,35 @@ namespace BDD_SPECFLOW_DEMO.Features
         }
         
         [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("Login with information invalid")]
-        [NUnit.Framework.CategoryAttribute("invalid")]
-        public virtual void LoginWithInformationInvalid()
+        [NUnit.Framework.DescriptionAttribute("Login with email not signed")]
+        [NUnit.Framework.CategoryAttribute("transform_data_table")]
+        public virtual void LoginWithEmailNotSigned()
         {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Login with information invalid", new string[] {
-                        "invalid"});
-#line 7
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Login with email not signed", new string[] {
+                        "transform_data_table"});
+#line 6
 this.ScenarioSetup(scenarioInfo);
-#line 8
+#line 7
  testRunner.Given("I am on LiveGuru site", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line 9
- testRunner.And("I input username daominhdam123123@gmail.com and password 123123", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 10
- testRunner.When("I click Login button", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line hidden
+            TechTalk.SpecFlow.Table table1 = new TechTalk.SpecFlow.Table(new string[] {
+                        "email",
+                        "pass"});
+            table1.AddRow(new string[] {
+                        "dam11111@gmail.com",
+                        "111111"});
+#line 8
+ testRunner.And("I input username and password", ((string)(null)), table1, "And ");
 #line 11
- testRunner.Then("The error message should be displayed", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+ testRunner.When("I click Login button", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line hidden
+            TechTalk.SpecFlow.Table table2 = new TechTalk.SpecFlow.Table(new string[] {
+                        "error"});
+            table2.AddRow(new string[] {
+                        "Invalid login or password."});
 #line 12
+ testRunner.Then("I verify the failure message", ((string)(null)), table2, "Then ");
+#line 15
  testRunner.And("I quit browser", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
             this.ScenarioCleanup();

@@ -28,7 +28,15 @@ namespace BDD_SPECFLOW_DEMO.Steps
             driver.FindElement(By.XPath(MyAccountUI.USERNAME_TXT)).SendKeys(userName);
             driver.FindElement(By.XPath(MyAccountUI.PASSWORD_TXT)).SendKeys(passWord);
         }
-        
+
+        [Given(@"I input username and password")]
+        public void GivenIInputUsernameAndPassword(Table table)
+        {
+            driver.FindElement(By.XPath(MyAccountUI.USERNAME_TXT)).SendKeys(table.Rows[0]["email"]);
+            driver.FindElement(By.XPath(MyAccountUI.PASSWORD_TXT)).SendKeys(table.Rows[0]["pass"]);
+        }
+
+
         [When(@"I click Login button")]
         public void WhenIClickLoginButton()
         {
@@ -42,6 +50,25 @@ namespace BDD_SPECFLOW_DEMO.Steps
             return errorMessage.Displayed;
 
         }
+
+        [Then(@"I verify the failure message")]
+        public bool ThenIVerifyTheFailureMessage(Table table)
+        {
+            string control = string.Format(MyAccountUI.DYNAMIC_INVALID_ERROR_MSG, table.Rows[0]["error"]);
+            IWebElement element = driver.FindElement(By.XPath(control));
+            return element.Displayed;
+        }
+  
+
+
+        [Then(@"The error message (.*) should be shown on form")]
+        public bool ThenTheErrorMessageInvalidLoginOrPassword_ShouldBeShownOnForm(string errorMsg)
+        {
+            string control = string.Format(MyAccountUI.DYNAMIC_INVALID_ERROR_MSG, errorMsg);
+            IWebElement element = driver.FindElement(By.XPath(control));
+            return element.Displayed;
+        }
+
 
         [Then(@"I quit browser")]
         public void ThenIQuitBrowser()

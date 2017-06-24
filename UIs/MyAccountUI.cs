@@ -13,6 +13,6 @@ namespace BDD_SPECFLOW_DEMO.UIs
         public static string PASSWORD_TXT = "//*[@id='pass']";
         public static string LOGIN_BTN = "//*[@id='send2']";
         public static string INVALID_ERROR_MSG = "//li[@class='error-msg']//span[contains(text(),'Invalid login or password.')]";
-
+        public static string DYNAMIC_INVALID_ERROR_MSG = "//li[@class='error-msg']//span[contains(text(),'{0}')]";
     }
 }

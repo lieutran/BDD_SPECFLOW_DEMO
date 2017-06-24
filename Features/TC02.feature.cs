@@ -19,21 +19,20 @@ namespace BDD_SPECFLOW_DEMO.Features
     [System.CodeDom.Compiler.GeneratedCodeAttribute("TechTalk.SpecFlow", "1.9.0.77")]
     [System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     [NUnit.Framework.TestFixtureAttribute()]
-    [NUnit.Framework.DescriptionAttribute("TC01")]
-    public partial class TC01Feature
+    [NUnit.Framework.DescriptionAttribute("TC02")]
+    public partial class TC02Feature
     {
         
         private static TechTalk.SpecFlow.ITestRunner testRunner;
         
-#line 1 "TC01.feature"
+#line 1 "TC02.feature"
 #line hidden
         
         [NUnit.Framework.TestFixtureSetUpAttribute()]
         public virtual void FeatureSetup()
         {
             testRunner = TechTalk.SpecFlow.TestRunnerManager.GetTestRunner();
-            TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "TC01", "In order to avoid silly mistakes\r\nAs a math idiot\r\nI want to be told the sum of t" +
-                    "wo numbers", ProgrammingLanguage.CSharp, ((string[])(null)));
+            TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "TC02", "As an automation tester\r\nI want use simple function of Specflow", ProgrammingLanguage.CSharp, ((string[])(null)));
             testRunner.OnFeatureStart(featureInfo);
         }
         
@@ -67,22 +66,31 @@ namespace BDD_SPECFLOW_DEMO.Features
         
         [NUnit.Framework.TestAttribute()]
         [NUnit.Framework.DescriptionAttribute("Login with information invalid")]
-        [NUnit.Framework.CategoryAttribute("invalid")]
-        public virtual void LoginWithInformationInvalid()
+        [NUnit.Framework.CategoryAttribute("example_keyword")]
+        [NUnit.Framework.TestCaseAttribute("dmd0001@gmail.com", "123123", "Invalid login or password.", null)]
+        [NUnit.Framework.TestCaseAttribute("dmd0002@gmail.com", "123123", "Invalid login or password.", null)]
+        [NUnit.Framework.TestCaseAttribute("dmd0003@gmail.com", "123123", "Invalid login or password.", null)]
+        [NUnit.Framework.TestCaseAttribute("dmd0004@gmail.com", "123123", "Invalid login or password.", null)]
+        public virtual void LoginWithInformationInvalid(string email, string password, string error_Msg, string[] exampleTags)
         {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Login with information invalid", new string[] {
-                        "invalid"});
-#line 7
+            string[] @__tags = new string[] {
+                    "example_keyword"};
+            if ((exampleTags != null))
+            {
+                @__tags = System.Linq.Enumerable.ToArray(System.Linq.Enumerable.Concat(@__tags, exampleTags));
+            }
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Login with information invalid", @__tags);
+#line 6
 this.ScenarioSetup(scenarioInfo);
-#line 8
+#line 7
  testRunner.Given("I am on LiveGuru site", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line 8
+ testRunner.And(string.Format("I input username {0} and password {1}", email, password), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 9
- testRunner.And("I input username daominhdam123123@gmail.com and password 123123", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 10
  testRunner.When("I click Login button", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line 10
+ testRunner.Then(string.Format("The error message {0} should be shown on form", error_Msg), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line 11
- testRunner.Then("The error message should be displayed", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
-#line 12
  testRunner.And("I quit browser", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
             this.ScenarioCleanup();
